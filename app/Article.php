@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Article extends Model
 {
 
+    protected $appends = array('summary', 'user');
+    
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -22,6 +24,17 @@ class Article extends Model
         return $this->belongsToMany(Tag::class);
     }
     
+    public function getUserAttribute()
+    {
+        return $this->user()->first();
+    }
+
+    public function delete() {
+        $this->comments()->delete();
+        $this->tags()->sync([]);
+        return parent::delete();
+    }
+
     public function getRouteKeyName()
     {
         return "slug";

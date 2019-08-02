@@ -41,9 +41,9 @@
                 </form>
                 @elseif(Auth::check())
                     @if(Auth::user()->isFollowing($user))
-                    <a href="{{route('user.unfollow', $user->username)}}" class="btn btn-success mt-3">Takip Ediyorsun</a>
+                    <a href="{{route('user.unfollow', $user)}}" class="btn btn-success mt-3">Takip Ediyorsun</a>
                     @else
-                    <a href="{{route('user.follow', $user->username)}}" class="btn btn-outline-success mt-3">Takip Et</a>
+                    <a href="{{route('user.follow', $user)}}" class="btn btn-outline-success mt-3">Takip Et</a>
                     @endif
                 @endif
             </div>

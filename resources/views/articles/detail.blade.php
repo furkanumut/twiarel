@@ -52,11 +52,11 @@
                             <hr>
                         @endif
                         {{ count($article->user->articles) }} <small>{{ __(' Article for ') }}</small>
-                        <a href="{{ route('user.articles',$article->user->username) }}">{{ $article->user->name }}</a>  | 
+                        <a href="{{ route('user.articles',$article->user) }}">{{ $article->user->name }}</a>  | 
                     <small>{{ __('Last Updated') }} : {{ $article->updated_at->diffForHumans() }}</small>
                     
                     @auth
-                        @if(Auth::user()->id == $article->user->id)
+                    @if(Auth::user()->can('update', $article))
                         <a href="{{ route('article.edit',$article->id)}}" class="btn btn-primary btn-sm float-sm-right"> {{ __('Edit Article') }} </a>   
                         <button class="btn btn-danger btn-sm float-sm-right mr-1 openModal" data-deleteurl="{{ route('article.delete',$article->id) }}" data-toggle="modal" data-target="#deleteFormModal"><i class="fas fa-trash-alt"></i> {{ __('Delete Article') }} </button>   
                         

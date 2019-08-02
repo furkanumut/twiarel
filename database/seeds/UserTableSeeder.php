@@ -13,7 +13,7 @@ class UserTableSeeder extends Seeder
         DB::table('users')->delete();
 
         User::create(array(
-            'avatar' => 'public/user-avatar/qJWBuoYlrjilruLspKMMC9T1ZXn1zaPdnePgHDdR.svg',
+            'avatar' => 'public/user-avatar/ysoldhiN63tTkv4lnQXEPCUBZf021govtTlt3odW.png',
             'email' => 'foo@bar.com',
             'password' => bcrypt('password'),
             'username' => Str::slug('User One', '-'),
@@ -24,7 +24,7 @@ class UserTableSeeder extends Seeder
         ));
 
         User::create(array(
-            'avatar' => 'public/user-avatar/qJWBuoYlrjilruLspKMMC9T1ZXn1zaPdnePgHDdR.svg',
+            'avatar' => 'public/user-avatar/ysoldhiN63tTkv4lnQXEPCUBZf021govtTlt3odW.png',
             'email' => 'foo2@bar.com',
             'password' => bcrypt('password'),
             'username' => Str::slug('User Two', '-'),
@@ -35,7 +35,7 @@ class UserTableSeeder extends Seeder
         ));
 
         User::create(array(
-            'avatar' => 'public/user-avatar/qJWBuoYlrjilruLspKMMC9T1ZXn1zaPdnePgHDdR.svg',
+            'avatar' => 'public/user-avatar/ysoldhiN63tTkv4lnQXEPCUBZf021govtTlt3odW.png',
             'email' => 'foo3@bar.com',
             'password' => bcrypt('password'),
             'username' => Str::slug('User Three', '-'),
@@ -46,7 +46,7 @@ class UserTableSeeder extends Seeder
         ));
 
         User::create(array(
-            'avatar' => 'public/user-avatar/qJWBuoYlrjilruLspKMMC9T1ZXn1zaPdnePgHDdR.svg',
+            'avatar' => 'public/user-avatar/ysoldhiN63tTkv4lnQXEPCUBZf021govtTlt3odW.png',
             'email' => 'foo4@bar.com',
             'password' => bcrypt('password'),
             'username' => Str::slug('User Four', '-'),
@@ -57,7 +57,7 @@ class UserTableSeeder extends Seeder
         ));
 
         User::create(array(
-            'avatar' => 'public/user-avatar/qJWBuoYlrjilruLspKMMC9T1ZXn1zaPdnePgHDdR.svg',
+            'avatar' => 'public/user-avatar/ysoldhiN63tTkv4lnQXEPCUBZf021govtTlt3odW.png',
             'email' => 'facfur33@gmail.com',
             'password' => bcrypt('asdasdasd'),
             'username' => Str::slug('Furkan Umut', '-'),

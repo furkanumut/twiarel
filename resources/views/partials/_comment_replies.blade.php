@@ -10,7 +10,7 @@
             @endif
                 <button class="btn btn-success btn-sm float-sm-right mr-1 openCommentModal" dataid="{{ $commentInfo->id }}" data-url="{{ route('article.addcomment',$commentInfo->id) }}" data-toggle="modal" data-target="#addCommentModal"> {{ __('Reply') }} </button>       
         @endauth
-        <a href="{{ route('user.articles',$commentInfo->user->username) }}">{{ $commentInfo->user->name }}</a>  | 
+        <a href="{{ route('user.articles',$commentInfo->user) }}">{{ $commentInfo->user->name }}</a>  | 
         <small>{{ __('Last Updated') }} : {{ $commentInfo->updated_at->diffForHumans() }}</small> <hr>
         {{ $commentInfo->body }}  <hr>
         @includewhen($commentInfo->comments,'partials._comment_replies', ['comments' => $commentInfo->comments, 'isSub' => true])

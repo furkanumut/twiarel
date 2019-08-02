@@ -20,6 +20,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/home', function () {
+    return  view('welcome');
+});
+
+
 Auth::routes();
 
 Route::get('/kucukler', function () {
@@ -36,8 +41,8 @@ Route::get('articles', 'ArticleController@index')->name("article.index");
 Route::get('articles/new', 'ArticleController@create')->name("article.create")->middleware('auth');
 Route::post('articles', 'ArticleController@store')->name("article.store")->middleware('auth');
 Route::get('articles/{article}', 'ArticleController@detail')->name("article.detail");
-Route::get('articles/{article}/edit', 'ArticleController@edit')->name("article.edit")->middleware('auth');
-Route::post('articles/{id}/edit', 'ArticleController@editstore')->name("article.update")->middleware('auth');
+Route::get('articles/{article}/edit', 'ArticleController@edit')->name("article.edit")->middleware('auth', 'can:update,article');
+Route::post('articles/{id}/edit', 'ArticleController@editstore')->name("article.update")->middleware('auth', 'can:update,article');
 Route::delete('articles/{id}/edit', 'ArticleController@delete')->name("article.delete")->middleware('auth');
 Route::post('articles/{article}/comment', 'ArticleController@addComment')->name("article.addcomment")->middleware('auth');
 Route::delete('articles/{article}/comment', 'ArticleController@deleteComment')->name("article.deletecomment")->middleware('auth');

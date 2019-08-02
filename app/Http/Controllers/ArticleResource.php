@@ -89,8 +89,12 @@ class ArticleResource extends Controller
      */
     public function edit(Article $article)
     {
-    //        
-    }
+        return array(
+            'title' => 'required|string|min:3|max:100',
+            'content' => 'required|string|min:5',
+            'tags' => 'comma seperated string values'
+        );
+        }
 
     /**
      * Update the specified resource in storage.
@@ -126,8 +130,8 @@ class ArticleResource extends Controller
         }
         $article->tags()->sync($tagIDsToAttach);
 
-        return $article;
-    }
+        return response()->json($article);
+        }
 
     /**
      * Remove the specified resource from storage.
@@ -137,12 +141,8 @@ class ArticleResource extends Controller
      */
     public function destroy(Article $article,Request $request)
     {
-        if ($request->user()->id !== $article->user_id) {
-            return response()->json(['message'=>__('Senin yetkin yok, yazan silebilir cnm benim.')], 404);            
-        }
-        $article->tags()->sync([]);
-        $article->comments()->delete();
-        $article->delete();
-        return response()->json(['message'=>__('Article silindi')], 200);
+        if ($request->user()->cant('delete', $article)) 
+            return abort(403, "Bu makaleyi silme yetkiniz bulunmuyor.");
+        return ['result' => $article->delete()];
         }
 }
